@@ -75,11 +75,11 @@ public class document extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Stock");
+        setTitle("Documents");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/librasoft/books.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/librasoft/returned.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

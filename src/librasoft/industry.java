@@ -58,7 +58,7 @@ public class industry extends javax.swing.JFrame {
         search = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Student");
+        setTitle("Industry");
         setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/librasoft/student.png"))); // NOI18N

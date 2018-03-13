@@ -65,7 +65,7 @@ public class police extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Borrowers List");
+        setTitle("Police");
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));

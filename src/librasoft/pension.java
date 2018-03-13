@@ -72,7 +72,7 @@ public class pension extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Staff");
+        setTitle("Pension");
         setResizable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/librasoft/stafff.png"))); // NOI18N
@@ -331,7 +331,6 @@ public class pension extends javax.swing.JFrame {
                 .addGap(0, 43, Short.MAX_VALUE))
         );
 
-        jLabel12.getAccessibleContext().setAccessibleName("Category");
         jLabel12.getAccessibleContext().setAccessibleDescription("");
 
         pack();
