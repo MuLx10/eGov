@@ -11,11 +11,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
+import java.util.Date;
 
 /**
  *
@@ -127,6 +130,16 @@ public class document extends javax.swing.JFrame {
         date.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 dateComponentAdded(evt);
+            }
+        });
+        date.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                dateMouseMoved(evt);
+            }
+        });
+        date.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                dateMousePressed(evt);
             }
         });
 
@@ -576,6 +589,18 @@ Class.forName("com.mysql.jdbc.Driver");
     private void firstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_firstActionPerformed
+
+    private void dateMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateMouseMoved
+        // TODO add your handling code here:
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date_temp = new Date();
+        date.setText(dateFormat.format(date_temp));
+    }//GEN-LAST:event_dateMouseMoved
+
+    private void dateMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateMousePressed
+        // TODO add your handling code here:
+        //date.setText("today1");
+    }//GEN-LAST:event_dateMousePressed
 
     /**
      * @param args the command line arguments
