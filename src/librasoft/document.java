@@ -149,7 +149,7 @@ public class document extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Title", "Author", "Edition", "Year", "Publisher", "Copyrights", "Pages", "Cost", "ISBN", "Status", "Date"
+                "ID", "First", "Last", "Sex", "Age", "PAN", "Aaadhar", "Date"
             }
         ));
         Tb.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
