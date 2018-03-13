@@ -93,6 +93,14 @@ public class login extends javax.swing.JFrame {
                 upassActionPerformed(evt);
             }
         });
+        upass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                upassKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                upassKeyReleased(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Admin", "User" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -116,15 +124,16 @@ public class login extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(upass, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(uname, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(15, 15, 15)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(upass)
+                            .addComponent(uname, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(jLabel3))
@@ -162,10 +171,11 @@ public class login extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
-
+public String password="";
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String username=uname.getText();
-       String password=upass.getText();
+           //password=upass.getText();
+           System.out.println(password);
        if (select.equals("Admin")){
         if(username.equals("admin")&& password.equals("admin"))
         {
@@ -188,6 +198,7 @@ System.exit(0);        // TODO add your handling code here:
                 JOptionPane.showMessageDialog(null,"User Username or Password is not correct");
             }
         }
+       password="";
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -214,6 +225,21 @@ upass.setText("");// TODO add your handling code here:
         // TODO add your handling code here:
         uname.setText(" Author");
     }//GEN-LAST:event_unameActionPerformed
+
+    private void upassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_upassKeyPressed
+        // TODO add your handling code here:
+        //upass.setText("jjj");
+        
+        
+    }//GEN-LAST:event_upassKeyPressed
+
+    private void upassKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_upassKeyReleased
+        // TODO add your handling code here:
+        String p=upass.getText();
+        password=password+p;
+        //System.out.println(p);
+        upass.setText("");
+    }//GEN-LAST:event_upassKeyReleased
 
     /**
      * @param args the command line arguments
