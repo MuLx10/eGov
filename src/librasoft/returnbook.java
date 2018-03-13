@@ -317,7 +317,7 @@ Class.forName("com.mysql.jdbc.Driver");
             Tb.setModel(DbUtils.resultSetToTableModel(rs));
        
         }catch(Exception e){
-        Logger.getLogger(Black.class.getName()).log(Level.SEVERE, null, e); 
+        Logger.getLogger(complain.class.getName()).log(Level.SEVERE, null, e); 
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -351,7 +351,7 @@ Class.forName("com.mysql.jdbc.Driver");
             }
         }
         catch(Exception e){
-            Logger.getLogger(LibraSoft.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(eSoft.class.getName()).log(Level.SEVERE, null, e);
         }
         DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         model.setValueAt(id.getText(),Tb.getSelectedRow(),0);
@@ -403,7 +403,7 @@ sname.setText("");name.setText("");date.setText("");title.setText("");edit.setTe
         
 
  }catch(Exception ex){
-            Logger.getLogger(LibraSoft.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(eSoft.class.getName()).log(Level.SEVERE, null, ex);
  }  }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -55,6 +55,12 @@ public class login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password");
 
+        uname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unameActionPerformed(evt);
+            }
+        });
+
         jButton1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jButton1.setText("Sign In");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +87,12 @@ public class login extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/librasoft/Admin.png"))); // NOI18N
+
+        upass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upassActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Admin", "User" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -193,6 +205,15 @@ upass.setText("");// TODO add your handling code here:
             System.out.println("Nice pick, too!");
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void upassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_upassActionPerformed
+
+    private void unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unameActionPerformed
+        // TODO add your handling code here:
+        uname.setText(" Author");
+    }//GEN-LAST:event_unameActionPerformed
 
     /**
      * @param args the command line arguments
