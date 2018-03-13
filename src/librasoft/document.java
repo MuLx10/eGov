@@ -30,7 +30,7 @@ public class document extends javax.swing.JFrame {
      * Creates new form stock
      */
     public document() {
-        initComponents();getContentPane().setBackground(new Color(73,155,255));  setLocation(250,80);setIcon();fetch();
+        initComponents();getContentPane().setBackground(new Color(200,5,100));  setLocation(250,80);setIcon();fetch();
     }
 
     /**
