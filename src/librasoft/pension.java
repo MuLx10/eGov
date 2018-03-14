@@ -24,7 +24,7 @@ import net.proteanit.sql.DbUtils;
 public class pension extends javax.swing.JFrame {
 
     /**
-     * Creates new form staff
+     * Creates new form pensioners
      */
     public pension() {
         initComponents();getContentPane().setBackground(new Color(73,155,255));  setLocation(250,50);setIcon();fetch();
@@ -372,7 +372,7 @@ state.setText("");
 
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-                PreparedStatement ps=conn.prepareStatement("INSERT INTO staff (ID,Name,Surname,Birth,Gender,State,City,Adress,Date,Position)values(?,?,?,?,?,?,?,?,?,?)");
+                PreparedStatement ps=conn.prepareStatement("INSERT INTO pensioners (ID,Name,Surname,Birth,Gender,State,City,Adress,Date,Position)values(?,?,?,?,?,?,?,?,?,?)");
 
                 ps.setString(1,id.getText());
                 ps.setString(2,name.getText());
@@ -421,7 +421,7 @@ PreparedStatement ps=null;
 ResultSet rs=null;
 Class.forName("com.mysql.jdbc.Driver");
         conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String g="SELECT * FROM staff ";
+            String g="SELECT * FROM pensioners ";
             ps=conn.prepareStatement(g);
             rs=ps.executeQuery();
             Tb.setModel(DbUtils.resultSetToTableModel(rs));
@@ -438,7 +438,7 @@ Class.forName("com.mysql.jdbc.Driver");
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String a="update staff set ID=?,Name=?,Surname=?,Birth=?,Gender=?,State=?,City=?,Adress=?,Date=?,Position=? ";
+            String a="update pensioners set ID=?,Name=?,Surname=?,Birth=?,Gender=?,State=?,City=?,Adress=?,Date=?,Position=? ";
             PreparedStatement ps=conn.prepareStatement(a);
             
       ps.setString(1,id.getText());
@@ -495,16 +495,16 @@ Class.forName("com.mysql.jdbc.Driver");
                 JOptionPane.showMessageDialog(null,"Table is Empty");
             }
             else{
-                JOptionPane.showMessageDialog(null,"Please You must Select a staff member");
+                JOptionPane.showMessageDialog(null,"Please You must Select an id");
             }
 
         }
- int i= JOptionPane.showConfirmDialog(null,"Do you really want to delete this staff member","Delete",JOptionPane.YES_NO_OPTION);
+ int i= JOptionPane.showConfirmDialog(null,"Do you really want to delete this entry","Delete",JOptionPane.YES_NO_OPTION);
  if(i==0){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String a="DELETE FROM staff where Name='"+name.getText()+"'";
+            String a="DELETE FROM pensioners where ID='"+name.getText()+"'";
             PreparedStatement ps=conn.prepareStatement(a);
 
             int z= ps.executeUpdate();
@@ -558,15 +558,15 @@ state.setText("");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
             PreparedStatement ps=null;
             ResultSet rs=null;
-            ps=conn.prepareStatement("Select *FROM staff where Name=?");
+            ps=conn.prepareStatement("Select *FROM pensioners where Name=?");
             ps.setString(1, search.getText());
             rs=ps.executeQuery();
             if(rs.next()){
-                JOptionPane.showMessageDialog(null,"This Person Exists    "   );
+                JOptionPane.showMessageDialog(null,"This entry Exists    "   );
 
             }
             else{
-                JOptionPane.showMessageDialog(null,"This Person Don't Exists");
+                JOptionPane.showMessageDialog(null,"This entry Don't Exists");
             }}
             catch(Exception e){
                 Logger.getLogger(eSoft.class.getName()).log(Level.SEVERE, null, e);

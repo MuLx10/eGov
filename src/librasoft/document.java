@@ -27,7 +27,7 @@ import java.util.Date;
 public class document extends javax.swing.JFrame {
 
     /**
-     * Creates new form stock
+     * Creates new form document
      */
     public document() {
         initComponents();getContentPane().setBackground(new Color(200,5,100));  setLocation(200,50);setIcon();fetch();
@@ -389,16 +389,16 @@ public class document extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Table is Empty");
             }
             else{
-                JOptionPane.showMessageDialog(null,"Please You must Select a book");
+                JOptionPane.showMessageDialog(null,"Please You must Select an id");
             }
 
         }
- int i= JOptionPane.showConfirmDialog(null,"Do you really want to delete this book","Delete",JOptionPane.YES_NO_OPTION);
+ int i= JOptionPane.showConfirmDialog(null,"Do you really want to delete this document ","Delete",JOptionPane.YES_NO_OPTION);
  if(i==0){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String a="DELETE FROM stock where Title='"+first.getText()+"'";
+            String a="DELETE FROM document where ID='"+first.getText()+"'";
             PreparedStatement ps=conn.prepareStatement(a);
 
             int z= ps.executeUpdate();
@@ -440,7 +440,7 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
 
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-                PreparedStatement ps=conn.prepareStatement("INSERT INTO stock (ID,Title,Author,Edition,Year,Publisher,Copyrights,Pages,Cost,ISBN,Status,Date)values(?,?,?,?,?,?,?,?,?,?,?,?)");
+                PreparedStatement ps=conn.prepareStatement("INSERT INTO document (ID,First,Last,Sex,Age,PAN,AID,Add,Date)values(?,?,?,?,?,?,?,?,?)");
 
                 ps.setString(1,id.getText());
                 ps.setString(2,first.getText());
@@ -483,7 +483,7 @@ PreparedStatement ps=null;
 ResultSet rs=null;
 Class.forName("com.mysql.jdbc.Driver");
         conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String g="SELECT * FROM stock ";
+            String g="SELECT * FROM document ";
             ps=conn.prepareStatement(g);
             rs=ps.executeQuery();
             Tb.setModel(DbUtils.resultSetToTableModel(rs));
@@ -500,14 +500,17 @@ Class.forName("com.mysql.jdbc.Driver");
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String a="update stock set ID=?,Title=?,Author=?,Edition=?,Year=?,Publisher=?,Copyrights=?,Pages=?,Cost=?,ISBN=?,Status=?,Date=? ";
+            String a="update document set ID=?,First=?,Last=?,Sex=?,Age=?,PAN=?,AID=?,Add=?,Date=? ";
             PreparedStatement ps=conn.prepareStatement(a);
-            ps.setString(1,id.getText());
-                ps.setString(2,first.getText());
-                  ps.setString(3,last.getText());
-                             ps.setString(5,PAN.getText());      ps.setString(6,Aadhaar.getText());      ps.setString(7,Address.getText());    
-                   ps.setString(9,age.getText());           ps.setString(11,sex.getSelectedItem().toString());
-                ps.setString(12,date.getText());
+            ps.setString(0,id.getText());
+                ps.setString(1,first.getText());
+                  ps.setString(2,last.getText());
+                  ps.setString(3,sex.getSelectedItem().toString());
+                    ps.setString(5,PAN.getText());      
+                    ps.setString(6,Aadhaar.getText());     
+                    ps.setString(7,Address.getText());    
+                   ps.setString(4,age.getText());           
+                ps.setString(8,date.getText());
               
     
           
@@ -531,14 +534,14 @@ Class.forName("com.mysql.jdbc.Driver");
          model.setValueAt(first.getText(),Tb.getSelectedRow(),1);
           model.setValueAt(last.getText(),Tb.getSelectedRow(),2);
         
-             model.setValueAt(PAN.getText(),Tb.getSelectedRow(),4);
-          model.setValueAt(Aadhaar.getText(),Tb.getSelectedRow(),5);
-           model.setValueAt(Address.getText(),Tb.getSelectedRow(),6);
+             model.setValueAt(PAN.getText(),Tb.getSelectedRow(),5);
+          model.setValueAt(Aadhaar.getText(),Tb.getSelectedRow(),6);
+           model.setValueAt(Address.getText(),Tb.getSelectedRow(),7);
           
-               model.setValueAt(age.getText(),Tb.getSelectedRow(),8);
+               model.setValueAt(age.getText(),Tb.getSelectedRow(),4);
      
-          model.setValueAt(sex.getSelectedItem(),Tb.getSelectedRow(),10);
-               model.setValueAt(date.getText(),Tb.getSelectedRow(),11);
+          model.setValueAt(sex.getSelectedItem(),Tb.getSelectedRow(),3);
+               model.setValueAt(date.getText(),Tb.getSelectedRow(),8);
         Tb.setDefaultEditor(Object.class, null);}
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -551,15 +554,15 @@ Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
             PreparedStatement ps=null;
             ResultSet rs=null;
-            ps=conn.prepareStatement("Select *FROM stock where Title=?");
+            ps=conn.prepareStatement("Select *FROM document where First=?");
             ps.setString(1, search.getText());
             rs=ps.executeQuery();
             if(rs.next()){
-                JOptionPane.showMessageDialog(null,"This Book Exists " );
+                JOptionPane.showMessageDialog(null,"This entry Exists " );
 
             }
             else{
-                JOptionPane.showMessageDialog(null,"This Book Don't Exists");
+                JOptionPane.showMessageDialog(null,"This entry Don't Exists");
             }}
             catch(Exception e){
                 Logger.getLogger(eSoft.class.getName()).log(Level.SEVERE, null, e);
