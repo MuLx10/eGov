@@ -30,7 +30,7 @@ public class complain extends javax.swing.JFrame {
      * Creates new form Black
      */
     public complain() {
-        initComponents();  getContentPane().setBackground(new Color(73,155,255));  setLocation(600,70);setIcon();fetch();
+        initComponents();  getContentPane().setBackground(new Color(73,155,255));  setLocation(300,70);setIcon();fetch();
     }
 
     /**

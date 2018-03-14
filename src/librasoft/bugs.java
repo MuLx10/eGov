@@ -18,7 +18,7 @@ public class bugs extends javax.swing.JFrame {
      * Creates new form support
      */
     public bugs() {
-        initComponents();getContentPane().setBackground(new Color(73,155,255));setIcon();setLocation(550,350);
+        initComponents();getContentPane().setBackground(new Color(73,155,255));setIcon();setLocation(500,200);
     }
 
     /**
