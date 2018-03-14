@@ -27,7 +27,7 @@ import net.proteanit.sql.DbUtils;
 public class revenue extends javax.swing.JFrame {
 
     /**
-     * Creates new form sold
+     * Creates new form revenue
      */
     public revenue() {
         initComponents();getContentPane().setBackground(new Color(7,15,25));  setLocation(150,50);setIcon();fetch();
@@ -122,6 +122,11 @@ public class revenue extends javax.swing.JFrame {
         jLabel13.setText("Tax");
 
         total.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        total.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                totalMouseMoved(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -328,7 +333,7 @@ amount.setText("");tax.setText("");total.setText("");
 
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-                PreparedStatement ps=conn.prepareStatement("INSERT INTO sold (ID,Title,Author,Edition,Year,Publisher,Copyrights,Pages,ISBN,Date,Price,Quantity,Total)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                PreparedStatement ps=conn.prepareStatement("INSERT INTO revenue (ID,Title,Author,Edition,Year,Publisher,Copyrights,Pages,ISBN,Date,Price,Quantity,Total)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                 ps.setString(1,id.getText());
              
@@ -369,7 +374,7 @@ PreparedStatement ps=null;
 ResultSet rs=null;
 Class.forName("com.mysql.jdbc.Driver");
         conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String g="SELECT * FROM sold ";
+            String g="SELECT * FROM revenue ";
             ps=conn.prepareStatement(g);
             rs=ps.executeQuery();
             Tb.setModel(DbUtils.resultSetToTableModel(rs));
@@ -386,7 +391,7 @@ Class.forName("com.mysql.jdbc.Driver");
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String a="update sold set ID=?,Title=?,Author=?,Edition=?,Year=?,Publisher=?,Copyrights=?,Pages=?,ISBN=?,Date=?,Price=?,Quantity=?,Total=? ";
+            String a="update revenue set ID=?,Type=?,Mode=?,Date=?,Amount=?,Tax=?,Total=? ";
             PreparedStatement ps=conn.prepareStatement(a);
             ps.setString(1,id.getText());
                      ps.setString(10,date.getText());       ps.setString(11,amount.getText());      ps.setString(12,tax.getText());  
@@ -426,7 +431,7 @@ Class.forName("com.mysql.jdbc.Driver");
                 JOptionPane.showMessageDialog(null,"Table is Empty");
             }
             else{
-                JOptionPane.showMessageDialog(null,"Please You must Select a book");
+                JOptionPane.showMessageDialog(null,"Please You must Select an ID");
             }
 
         }
@@ -435,7 +440,7 @@ Class.forName("com.mysql.jdbc.Driver");
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String a="DELETE FROM sold where Title='"+id.getText()+"'";
+            String a="DELETE FROM revenue where ID='"+id.getText()+"'";
             PreparedStatement ps=conn.prepareStatement(a);
 
             int z= ps.executeUpdate();
@@ -496,6 +501,17 @@ total.setText(Double.toString(shuma));
         Date date_temp = new Date();
         date.setText(dateFormat.format(date_temp));
     }//GEN-LAST:event_dateMouseMoved
+
+    private void totalMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_totalMouseMoved
+        // TODO add your handling code here:
+        int amt = Integer.parseInt(amount.getText());
+        int tx = Integer.parseInt(tax.getText());
+        
+        double tot = amt*(1+0.01*tx);
+       
+        total.setText(Double.toString(tot));
+        
+    }//GEN-LAST:event_totalMouseMoved
 
     /**
      * @param args the command line arguments
