@@ -27,7 +27,7 @@ import java.util.Date;
 public class police extends javax.swing.JFrame {
 
     /**
-     * Creates new form stock
+     * Creates new form police
      */
     public police() {
         initComponents();getContentPane().setBackground(new Color(200,100,50));  setLocation(250,80);setIcon();fetch();
@@ -52,7 +52,7 @@ public class police extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         PAN = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        Address = new javax.swing.JTextField();
+        address = new javax.swing.JTextField();
         age = new javax.swing.JTextField();
         date = new javax.swing.JTextField();
         sex = new javax.swing.JComboBox<>();
@@ -72,7 +72,7 @@ public class police extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        Address1 = new javax.swing.JTextField();
+        details = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -124,7 +124,7 @@ public class police extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(39, 8, 8));
         jLabel6.setText("Age");
 
-        Address.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        address.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
 
         age.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
 
@@ -235,7 +235,7 @@ public class police extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(39, 8, 8));
         jLabel7.setText("Details");
 
-        Address1.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        details.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(39, 8, 8));
@@ -270,8 +270,8 @@ public class police extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(last, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(first, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Address, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Address1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(details, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -370,7 +370,7 @@ public class police extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
-                                .addComponent(Address, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -378,7 +378,7 @@ public class police extends javax.swing.JFrame {
                                 .addGap(61, 61, 61)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Address1, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                                .addComponent(details, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -408,16 +408,16 @@ public class police extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Table is Empty");
             }
             else{
-                JOptionPane.showMessageDialog(null,"Please You must Select a book");
+                JOptionPane.showMessageDialog(null,"Please You must Select a fir");
             }
 
         }
- int i= JOptionPane.showConfirmDialog(null,"Do you really want to delete this book","Delete",JOptionPane.YES_NO_OPTION);
+ int i= JOptionPane.showConfirmDialog(null,"Do you really want to delete this fir","Delete",JOptionPane.YES_NO_OPTION);
  if(i==0){
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String a="DELETE FROM stock where Title='"+first.getText()+"'";
+            String a="DELETE FROM police where ID='"+first.getText()+"'";
             PreparedStatement ps=conn.prepareStatement(a);
 
             int z= ps.executeUpdate();
@@ -428,7 +428,7 @@ public class police extends javax.swing.JFrame {
                 model.removeRow(Tb.getSelectedRow());
               id.setText("");  
 first.setText("");PAN.setText("");
-Aadhaar.setText("");Address.setText("");last.setText("");date.setText("");
+Aadhaar.setText("");address.setText("");last.setText("");date.setText("");
             
          
         }
@@ -443,7 +443,7 @@ Aadhaar.setText("");Address.setText("");last.setText("");date.setText("");
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 id.setText("");  
 first.setText("");PAN.setText("");
-Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.setText("");
+Aadhaar.setText("");address.setText("");last.setText("");age.setText("");date.setText("");
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -451,7 +451,7 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         if(!id.getText().trim().equals("")&&!first.getText().trim().equals("")&&!last.getText().trim().equals("")){
-            model.addRow(new Object[]{id.getText(),first.getText(),last.getText(),PAN.getText(),Aadhaar.getText(),Address.getText(),age.getText(),sex.getSelectedItem(),date.getText()});
+            model.addRow(new Object[]{id.getText(),first.getText(),last.getText(),PAN.getText(),Aadhaar.getText(),address.getText(),age.getText(),sex.getSelectedItem(),date.getText()});
 
             try{
 
@@ -459,12 +459,12 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
 
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-                PreparedStatement ps=conn.prepareStatement("INSERT INTO stock (ID,Title,Author,Edition,Year,Publisher,Copyrights,Pages,Cost,ISBN,Status,Date)values(?,?,?,?,?,?,?,?,?,?,?,?)");
+                PreparedStatement ps=conn.prepareStatement("INSERT INTO police (ID,Type,First,Last,Sex,Age,PAN,AID,Address,Details,Date)values(?,?,?,?,?,?,?,?,?,?,?)");
 
                 ps.setString(1,id.getText());
                 ps.setString(2,first.getText());
                   ps.setString(3,last.getText());
-                             ps.setString(5,PAN.getText());      ps.setString(6,Aadhaar.getText());      ps.setString(7,Address.getText());    
+                             ps.setString(5,PAN.getText());      ps.setString(6,Aadhaar.getText());      ps.setString(7,address.getText());    
                    ps.setString(9,age.getText());          ps.setString(11,sex.getSelectedItem().toString());
                 ps.setString(12,date.getText());
               
@@ -475,7 +475,7 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
                     JOptionPane.showMessageDialog(null,"Successfully saved  ");
                    id.setText("");  
 first.setText("");PAN.setText("");
-Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.setText("");
+Aadhaar.setText("");address.setText("");last.setText("");age.setText("");date.setText("");
           
                  
                     ps.close();
@@ -502,7 +502,7 @@ PreparedStatement ps=null;
 ResultSet rs=null;
 Class.forName("com.mysql.jdbc.Driver");
         conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String g="SELECT * FROM stock ";
+            String g="SELECT * FROM police ";
             ps=conn.prepareStatement(g);
             rs=ps.executeQuery();
             Tb.setModel(DbUtils.resultSetToTableModel(rs));
@@ -519,14 +519,18 @@ Class.forName("com.mysql.jdbc.Driver");
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String a="update stock set ID=?,Title=?,Author=?,Edition=?,Year=?,Publisher=?,Copyrights=?,Pages=?,Cost=?,ISBN=?,Status=?,Date=? ";
+            String a="update police set ID=?,Type=?,First=?,Last=?,Sex=?,Age=?,PAN=?,AID=?,Address=?,Details=?,Date=? ";
+            //(ID,Type,First,Last,Sex,Age,PAN,AID,Address,Details,Date)
             PreparedStatement ps=conn.prepareStatement(a);
-            ps.setString(1,id.getText());
+            ps.setString(0,id.getText());
+            ps.setString(1, (String) type.getSelectedItem());
                 ps.setString(2,first.getText());
                   ps.setString(3,last.getText());
-                             ps.setString(5,PAN.getText());      ps.setString(6,Aadhaar.getText());      ps.setString(7,Address.getText());    
-                   ps.setString(9,age.getText());           ps.setString(11,sex.getSelectedItem().toString());
-                ps.setString(12,date.getText());
+                             ps.setString(6,PAN.getText());      ps.setString(7,Aadhaar.getText());      ps.setString(7,address.getText());    
+                   ps.setString(5,age.getText());           ps.setString(4,sex.getSelectedItem().toString());
+                ps.setString(10,date.getText());
+                ps.setString(8,address.getText());
+                ps.setString(9,details.getText());
               
     
           
@@ -552,7 +556,7 @@ Class.forName("com.mysql.jdbc.Driver");
         
              model.setValueAt(PAN.getText(),Tb.getSelectedRow(),4);
           model.setValueAt(Aadhaar.getText(),Tb.getSelectedRow(),5);
-           model.setValueAt(Address.getText(),Tb.getSelectedRow(),6);
+           model.setValueAt(address.getText(),Tb.getSelectedRow(),6);
           
                model.setValueAt(age.getText(),Tb.getSelectedRow(),8);
      
@@ -570,15 +574,15 @@ Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
             PreparedStatement ps=null;
             ResultSet rs=null;
-            ps=conn.prepareStatement("Select *FROM stock where Title=?");
-            ps.setString(1, search.getText());
+            ps=conn.prepareStatement("Select *FROM police where ID=?");
+            ps.setString(0, search.getText());
             rs=ps.executeQuery();
             if(rs.next()){
-                JOptionPane.showMessageDialog(null,"This Book Exists " );
+                JOptionPane.showMessageDialog(null,"This entry Exists " );
 
             }
             else{
-                JOptionPane.showMessageDialog(null,"This Book Don't Exists");
+                JOptionPane.showMessageDialog(null,"This entry Don't Exists");
             }}
             catch(Exception e){
                 Logger.getLogger(eSoft.class.getName()).log(Level.SEVERE, null, e);
@@ -592,7 +596,7 @@ Class.forName("com.mysql.jdbc.Driver");
            first.setText(model.getValueAt(Tb.getSelectedRow(),1).toString());
               last.setText(model.getValueAt(Tb.getSelectedRow(),2).toString());
           
-            PAN.setText(model.getValueAt(Tb.getSelectedRow(),4).toString());  Aadhaar.setText(model.getValueAt(Tb.getSelectedRow(),5).toString());  Address.setText(model.getValueAt(Tb.getSelectedRow(),6).toString());
+            PAN.setText(model.getValueAt(Tb.getSelectedRow(),4).toString());  Aadhaar.setText(model.getValueAt(Tb.getSelectedRow(),5).toString());  address.setText(model.getValueAt(Tb.getSelectedRow(),6).toString());
                age.setText(model.getValueAt(Tb.getSelectedRow(),8).toString()); 
               sex.setSelectedItem(model.getValueAt(Tb.getSelectedRow(),10).toString());
         date.setText(model.getValueAt(Tb.getSelectedRow(),11).toString());   
@@ -667,12 +671,12 @@ Class.forName("com.mysql.jdbc.Driver");
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Aadhaar;
-    private javax.swing.JTextField Address;
-    private javax.swing.JTextField Address1;
     private javax.swing.JTextField PAN;
     private javax.swing.JTable Tb;
+    private javax.swing.JTextField address;
     private javax.swing.JTextField age;
     private javax.swing.JTextField date;
+    private javax.swing.JTextField details;
     private javax.swing.JTextField first;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
