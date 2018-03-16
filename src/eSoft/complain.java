@@ -46,7 +46,7 @@ public class complain extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
+        mail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         date = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -72,10 +72,10 @@ public class complain extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Email ID");
 
-        id.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        id.addActionListener(new java.awt.event.ActionListener() {
+        mail.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        mail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idActionPerformed(evt);
+                mailActionPerformed(evt);
             }
         });
 
@@ -142,7 +142,7 @@ public class complain extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addGap(18, 18, 18)
-                                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addGap(40, 40, 40)
@@ -181,7 +181,7 @@ public class complain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -198,7 +198,7 @@ public class complain extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //DefaultTableModel model=(DefaultTableModel) Tb.getModel();
-        if(!name.getText().trim().equals("")&&!id.getText().trim().equals("")){
+        if(!name.getText().trim().equals("")&&!mail.getText().trim().equals("")){
            // model.addRow(new Object[]{id.getText(),name.getText(),date.getText(),reason.getText()});
 
             try{
@@ -209,18 +209,18 @@ public class complain extends javax.swing.JFrame {
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
                 PreparedStatement ps=conn.prepareStatement("INSERT INTO complain (Name,email,Date,Reasons)values(?,?,?,?)");
 
-                ps.setString(1,id.getText());
+                ps.setString(1,mail.getText());
                 ps.setString(2,name.getText());
-          
-                ps.setString(5,date.getText());
+                ps.setString(3,mail.getText());
+                ps.setString(4,date.getText());
          
-                ps.setString(7,reason.getText());
+                ps.setString(5,reason.getText());
                 
                 int i=ps.executeUpdate();
     
                 if(i>0){
                     JOptionPane.showMessageDialog(null,"You have succsessfully registered this Complian ");
-                    id.setText("");
+                    mail.setText("");
                     name.setText("");
                     
          
@@ -262,7 +262,7 @@ public class complain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-id.setText("");
+mail.setText("");
 name.setText("");
 date.setText("");
 reason.setText("");
@@ -274,9 +274,9 @@ reason.setText("");
         date.setText("today");
     }//GEN-LAST:event_dateActionPerformed
 
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+    private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
+    }//GEN-LAST:event_mailActionPerformed
 
     private void dateMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dateMouseMoved
         // TODO add your handling code here:
@@ -323,7 +323,6 @@ reason.setText("");
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField date;
-    private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -334,6 +333,7 @@ reason.setText("");
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField mail;
     private javax.swing.JTextField name;
     private javax.swing.JTextArea reason;
     // End of variables declaration//GEN-END:variables

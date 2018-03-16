@@ -337,12 +337,14 @@ amount.setText("");tax.setText("");total.setText("");
                 PreparedStatement ps=conn.prepareStatement("INSERT INTO revenue (ID,Type,Mode,Date,Amount,Tax,Total)values(?,?,?,?,?,?,?)");
 
                 ps.setString(1,id.getText());
+                ps.setString(2,type.getSelectedItem().toString());
+                ps.setString(3,pmode.getSelectedItem().toString());
              
              
-             ps.setString(10,date.getText());       
-             ps.setString(11,amount.getText());      
-             ps.setString(12,tax.getText());  
-                ps.setString(13,total.getText());
+             ps.setString(4,date.getText());       
+             ps.setString(5,amount.getText());      
+             ps.setString(6,tax.getText());  
+                ps.setString(7,total.getText());
               
                 
                 int i=ps.executeUpdate();
@@ -394,9 +396,15 @@ Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="update revenue set ID=?,Type=?,Mode=?,Date=?,Amount=?,Tax=?,Total=? ";
             PreparedStatement ps=conn.prepareStatement(a);
-            ps.setString(1,id.getText());
-                     ps.setString(10,date.getText());       ps.setString(11,amount.getText());      ps.setString(12,tax.getText());  
-                ps.setString(13,total.getText());
+           ps.setString(1,id.getText());
+                ps.setString(2,type.getSelectedItem().toString());
+                ps.setString(3,pmode.getSelectedItem().toString());
+             
+             
+             ps.setString(4,date.getText());       
+             ps.setString(5,amount.getText());      
+             ps.setString(6,tax.getText());  
+                ps.setString(7,total.getText());
               
     
           

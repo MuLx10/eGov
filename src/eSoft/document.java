@@ -445,9 +445,12 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
                 ps.setString(1,id.getText());
                 ps.setString(2,first.getText());
                   ps.setString(3,last.getText());
-                             ps.setString(5,PAN.getText());      ps.setString(6,Aadhaar.getText());      ps.setString(7,Address.getText());    
-                   ps.setString(9,age.getText());          ps.setString(11,sex.getSelectedItem().toString());
-                ps.setString(12,date.getText());
+                             ps.setString(6,PAN.getText());      
+                             ps.setString(7,Aadhaar.getText());      
+                             ps.setString(8,Address.getText());    
+                        ps.setString(4,sex.getSelectedItem().toString());
+                         ps.setString(5,age.getText());    
+                ps.setString(9,date.getText());
               
                 
                 int i=ps.executeUpdate();
@@ -502,15 +505,15 @@ Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="update document set ID=?,First=?,Last=?,Sex=?,Age=?,PAN=?,AID=?,Address=?,Date=? ";
             PreparedStatement ps=conn.prepareStatement(a);
-            ps.setString(0,id.getText());
-                ps.setString(1,first.getText());
-                  ps.setString(2,last.getText());
-                  ps.setString(3,sex.getSelectedItem().toString());
-                    ps.setString(5,PAN.getText());      
-                    ps.setString(6,Aadhaar.getText());     
-                    ps.setString(7,Address.getText());    
-                   ps.setString(4,age.getText());           
-                ps.setString(8,date.getText());
+           ps.setString(1,id.getText());
+                ps.setString(2,first.getText());
+                  ps.setString(3,last.getText());
+                             ps.setString(6,PAN.getText());      
+                             ps.setString(7,Aadhaar.getText());      
+                             ps.setString(8,Address.getText());    
+                        ps.setString(4,sex.getSelectedItem().toString());
+                         ps.setString(5,age.getText());    
+                ps.setString(9,date.getText());
               
     
           
