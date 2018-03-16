@@ -209,12 +209,12 @@ public class complain extends javax.swing.JFrame {
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
                 PreparedStatement ps=conn.prepareStatement("INSERT INTO complain (Name,email,Date,Reasons)values(?,?,?,?)");
 
-                ps.setString(1,mail.getText());
-                ps.setString(2,name.getText());
-                ps.setString(3,mail.getText());
-                ps.setString(4,date.getText());
+            
+                ps.setString(1,name.getText());
+                ps.setString(2,mail.getText());
+                ps.setString(3,date.getText());
          
-                ps.setString(5,reason.getText());
+                ps.setString(4,reason.getText());
                 
                 int i=ps.executeUpdate();
     

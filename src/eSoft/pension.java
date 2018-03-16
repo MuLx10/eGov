@@ -395,7 +395,7 @@ state.setText("");
                   ps.setString(7,city.getText()); ps.setString(8,adress.getText()); ps.setString(9,date.getText());
                   
                   
-                    ps.setString(10,position.getSelectedItem().toString());
+                   
                 int i=ps.executeUpdate();
     
                 if(i>0){
@@ -462,7 +462,7 @@ Class.forName("com.mysql.jdbc.Driver");
                   ps.setString(7,city.getText()); ps.setString(8,adress.getText()); ps.setString(9,date.getText());
                   
                   
-                    ps.setString(10,position.getSelectedItem().toString());
+                    
           
             
 
