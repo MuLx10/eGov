@@ -206,7 +206,7 @@ public class complain extends javax.swing.JFrame {
 
 
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
                 PreparedStatement ps=conn.prepareStatement("INSERT INTO complain (Name,email,Date,Reasons)values(?,?,?,?)");
 
                 ps.setString(1,id.getText());
@@ -250,7 +250,7 @@ public class complain extends javax.swing.JFrame {
         PreparedStatement ps=null;
         ResultSet rs=null;
         Class.forName("com.mysql.jdbc.Driver");
-        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String g="SELECT * FROM complain ";
             ps=conn.prepareStatement(g);
             rs=ps.executeQuery();

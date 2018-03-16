@@ -397,7 +397,7 @@ public class document extends javax.swing.JFrame {
  if(i==0){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="DELETE FROM document where ID='"+first.getText()+"'";
             PreparedStatement ps=conn.prepareStatement(a);
 
@@ -439,8 +439,8 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
 
 
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-                PreparedStatement ps=conn.prepareStatement("INSERT INTO document (ID,First,Last,Sex,Age,PAN,AID,Add,Date)values(?,?,?,?,?,?,?,?,?)");
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
+                PreparedStatement ps=conn.prepareStatement("INSERT INTO document (ID,First,Last,Sex,Age,PAN,AID,Address,Date)values(?,?,?,?,?,?,?,?,?)");
 
                 ps.setString(1,id.getText());
                 ps.setString(2,first.getText());
@@ -482,7 +482,7 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
 PreparedStatement ps=null;
 ResultSet rs=null;
 Class.forName("com.mysql.jdbc.Driver");
-        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String g="SELECT * FROM document ";
             ps=conn.prepareStatement(g);
             rs=ps.executeQuery();
@@ -499,8 +499,8 @@ Class.forName("com.mysql.jdbc.Driver");
     }else{
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-            String a="update document set ID=?,First=?,Last=?,Sex=?,Age=?,PAN=?,AID=?,Add=?,Date=? ";
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
+            String a="update document set ID=?,First=?,Last=?,Sex=?,Age=?,PAN=?,AID=?,Address=?,Date=? ";
             PreparedStatement ps=conn.prepareStatement(a);
             ps.setString(0,id.getText());
                 ps.setString(1,first.getText());
@@ -551,7 +551,7 @@ Class.forName("com.mysql.jdbc.Driver");
 }else{
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             PreparedStatement ps=null;
             ResultSet rs=null;
             ps=conn.prepareStatement("Select *FROM document where First=?");

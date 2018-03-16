@@ -172,7 +172,7 @@ public class pension extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name", "Surname", "Birth", "Gender", "State", "City", "Adress", "Date", "Position"
+                "ID", "Name", "Surname", "Birth", "Gender", "State", "City", "Adress", "Date"
             }
         ));
         Tb.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -382,8 +382,8 @@ state.setText("");
 
 
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-                PreparedStatement ps=conn.prepareStatement("INSERT INTO pensioners (ID,Name,Surname,Birth,Gender,State,City,Adress,Date,Position)values(?,?,?,?,?,?,?,?,?,?)");
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
+                PreparedStatement ps=conn.prepareStatement("INSERT INTO pensioners (ID,Name,Surname,Birth,Gender,State,City,Address,Date)values(?,?,?,?,?,?,?,?,?)");
 
                 ps.setString(1,id.getText());
                 ps.setString(2,name.getText());
@@ -431,7 +431,7 @@ state.setText("");
 PreparedStatement ps=null;
 ResultSet rs=null;
 Class.forName("com.mysql.jdbc.Driver");
-        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String g="SELECT * FROM pensioners ";
             ps=conn.prepareStatement(g);
             rs=ps.executeQuery();
@@ -448,7 +448,7 @@ Class.forName("com.mysql.jdbc.Driver");
     }else{
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="update pensioners set ID=?,Name=?,Surname=?,Birth=?,Gender=?,State=?,City=?,Adress=?,Date=?,Position=? ";
             PreparedStatement ps=conn.prepareStatement(a);
             
@@ -514,7 +514,7 @@ Class.forName("com.mysql.jdbc.Driver");
  if(i==0){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="DELETE FROM pensioners where ID='"+name.getText()+"'";
             PreparedStatement ps=conn.prepareStatement(a);
 
@@ -566,7 +566,7 @@ state.setText("");
 }else{
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             PreparedStatement ps=null;
             ResultSet rs=null;
             ps=conn.prepareStatement("Select *FROM pensioners where Name=?");

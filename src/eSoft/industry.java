@@ -264,7 +264,7 @@ public class industry extends javax.swing.JFrame {
 
 
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
                 PreparedStatement ps=conn.prepareStatement("INSERT INTO student (ID,Name,Surname,Date)values(?,?,?,?)");
 
                 ps.setString(1,id.getText());

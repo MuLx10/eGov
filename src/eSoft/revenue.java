@@ -332,8 +332,9 @@ amount.setText("");tax.setText("");total.setText("");
 
 
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
-                PreparedStatement ps=conn.prepareStatement("INSERT INTO revenue (ID,Title,Author,Edition,Year,Publisher,Copyrights,Pages,ISBN,Date,Price,Quantity,Total)values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
+                //ID=?,Type=?,Mode=?,Date=?,Amount=?,Tax=?,Total=?
+                PreparedStatement ps=conn.prepareStatement("INSERT INTO revenue (ID,Type,Mode,Date,Amount,Tax,Total)values(?,?,?,?,?,?,?)");
 
                 ps.setString(1,id.getText());
              
@@ -373,7 +374,7 @@ amount.setText("");date.setText("");tax.setText("");total.setText("");
 PreparedStatement ps=null;
 ResultSet rs=null;
 Class.forName("com.mysql.jdbc.Driver");
-        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String g="SELECT * FROM revenue ";
             ps=conn.prepareStatement(g);
             rs=ps.executeQuery();
@@ -390,7 +391,7 @@ Class.forName("com.mysql.jdbc.Driver");
     }else{
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="update revenue set ID=?,Type=?,Mode=?,Date=?,Amount=?,Tax=?,Total=? ";
             PreparedStatement ps=conn.prepareStatement(a);
             ps.setString(1,id.getText());
@@ -439,7 +440,7 @@ Class.forName("com.mysql.jdbc.Driver");
  if(i==0){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="DELETE FROM revenue where ID='"+id.getText()+"'";
             PreparedStatement ps=conn.prepareStatement(a);
 

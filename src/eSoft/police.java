@@ -416,7 +416,7 @@ public class police extends javax.swing.JFrame {
  if(i==0){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="DELETE FROM police where ID='"+first.getText()+"'";
             PreparedStatement ps=conn.prepareStatement(a);
 
@@ -458,10 +458,11 @@ Aadhaar.setText("");address.setText("");last.setText("");age.setText("");date.se
 
 
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+                Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
                 PreparedStatement ps=conn.prepareStatement("INSERT INTO police (ID,Type,First,Last,Sex,Age,PAN,AID,Address,Details,Date)values(?,?,?,?,?,?,?,?,?,?,?)");
 
-                ps.setString(1,id.getText());
+                ps.setString(0,id.getText());
+                ps.setString(1,type.getSelectedItem().toString());
                 ps.setString(2,first.getText());
                   ps.setString(3,last.getText());
                              ps.setString(5,PAN.getText());      ps.setString(6,Aadhaar.getText());      ps.setString(7,address.getText());    
@@ -501,7 +502,7 @@ Aadhaar.setText("");address.setText("");last.setText("");age.setText("");date.se
 PreparedStatement ps=null;
 ResultSet rs=null;
 Class.forName("com.mysql.jdbc.Driver");
-        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String g="SELECT * FROM police ";
             ps=conn.prepareStatement(g);
             rs=ps.executeQuery();
@@ -518,7 +519,7 @@ Class.forName("com.mysql.jdbc.Driver");
     }else{
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="update police set ID=?,Type=?,First=?,Last=?,Sex=?,Age=?,PAN=?,AID=?,Address=?,Details=?,Date=? ";
             //(ID,Type,First,Last,Sex,Age,PAN,AID,Address,Details,Date)
             PreparedStatement ps=conn.prepareStatement(a);
@@ -548,20 +549,21 @@ Class.forName("com.mysql.jdbc.Driver");
         }
         catch(Exception e){
             Logger.getLogger(eSoft.class.getName()).log(Level.SEVERE, null, e);
-        }
+        }//(ID,Type,First,Last,Sex,Age,PAN,AID,Address,Details,Date)
         DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         model.setValueAt(id.getText(),Tb.getSelectedRow(),0);
-         model.setValueAt(first.getText(),Tb.getSelectedRow(),1);
-          model.setValueAt(last.getText(),Tb.getSelectedRow(),2);
+        model.setValueAt(type.getSelectedItem(),Tb.getSelectedRow(),1);
+         model.setValueAt(first.getText(),Tb.getSelectedRow(),2);
+          model.setValueAt(last.getText(),Tb.getSelectedRow(),3);
         
-             model.setValueAt(PAN.getText(),Tb.getSelectedRow(),4);
-          model.setValueAt(Aadhaar.getText(),Tb.getSelectedRow(),5);
-           model.setValueAt(address.getText(),Tb.getSelectedRow(),6);
+             model.setValueAt(PAN.getText(),Tb.getSelectedRow(),6);
+          model.setValueAt(Aadhaar.getText(),Tb.getSelectedRow(),7);
+           model.setValueAt(address.getText(),Tb.getSelectedRow(),8);
           
-               model.setValueAt(age.getText(),Tb.getSelectedRow(),8);
+               model.setValueAt(age.getText(),Tb.getSelectedRow(),5);
      
-          model.setValueAt(sex.getSelectedItem(),Tb.getSelectedRow(),10);
-               model.setValueAt(date.getText(),Tb.getSelectedRow(),11);
+          model.setValueAt(sex.getSelectedItem(),Tb.getSelectedRow(),4);
+               model.setValueAt(date.getText(),Tb.getSelectedRow(),9);
         Tb.setDefaultEditor(Object.class, null);}
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -571,7 +573,7 @@ Class.forName("com.mysql.jdbc.Driver");
 }else{
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
+            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             PreparedStatement ps=null;
             ResultSet rs=null;
             ps=conn.prepareStatement("Select *FROM police where ID=?");
