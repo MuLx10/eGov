@@ -428,7 +428,13 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    public boolean validate_age(String age){
+        int a = Integer.parseInt(age);
+        if(a<100 && a>0)
+            return true;
+        else
+            return false;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         if(!id.getText().trim().equals("")&&!first.getText().trim().equals("")&&!last.getText().trim().equals("")){
@@ -444,12 +450,14 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
 
                 ps.setString(1,id.getText());
                 ps.setString(2,first.getText());
-                  ps.setString(3,last.getText());
-                             ps.setString(6,PAN.getText());      
-                             ps.setString(7,Aadhaar.getText());      
-                             ps.setString(8,Address.getText());    
-                        ps.setString(4,sex.getSelectedItem().toString());
-                         ps.setString(5,age.getText());    
+                ps.setString(3,last.getText());
+                ps.setString(6,PAN.getText());      
+                ps.setString(7,Aadhaar.getText());      
+                ps.setString(8,Address.getText());    
+                ps.setString(4,sex.getSelectedItem().toString());
+                String age_ = age.getText();
+                if (validate_age(age_))
+                    ps.setString(5,age_);    
                 ps.setString(9,date.getText());
               
                 
@@ -477,7 +485,6 @@ Aadhaar.setText("");Address.setText("");last.setText("");age.setText("");date.se
         }
 
     fetch();
-
     }                                   
     public void fetch(){
         try{
@@ -512,7 +519,9 @@ Class.forName("com.mysql.jdbc.Driver");
                              ps.setString(7,Aadhaar.getText());      
                              ps.setString(8,Address.getText());    
                         ps.setString(4,sex.getSelectedItem().toString());
-                         ps.setString(5,age.getText());    
+                         String age_ = age.getText();
+                if (validate_age(age_))
+                    ps.setString(5,age_);    
                 ps.setString(9,date.getText());
               
     

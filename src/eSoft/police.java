@@ -427,8 +427,12 @@ public class police extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Successfully Deleted");
                 model.removeRow(Tb.getSelectedRow());
               id.setText("");  
-first.setText("");PAN.setText("");
-Aadhaar.setText("");address.setText("");last.setText("");date.setText("");
+              first.setText("");
+              PAN.setText("");
+              Aadhaar.setText("");
+              address.setText("");
+              last.setText("");
+              date.setText("");
             
          
         }
@@ -441,13 +445,24 @@ Aadhaar.setText("");address.setText("");last.setText("");date.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-id.setText("");  
-first.setText("");PAN.setText("");
-Aadhaar.setText("");address.setText("");last.setText("");age.setText("");date.setText("");
+    id.setText("");  
+    first.setText("");
+    PAN.setText("");
+    Aadhaar.setText("");
+    address.setText("");
+    last.setText("");
+    age.setText("");
+    date.setText("");
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    public boolean validate_age(String age){
+        int a = Integer.parseInt(age);
+        if(a<100 && a>0)
+            return true;
+        else
+            return false;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         if(!id.getText().trim().equals("")&&!first.getText().trim().equals("")&&!last.getText().trim().equals("")){
@@ -466,8 +481,9 @@ Aadhaar.setText("");address.setText("");last.setText("");age.setText("");date.se
                 ps.setString(3,first.getText());
                   ps.setString(4,last.getText());
                              ps.setString(7,PAN.getText());      ps.setString(8,Aadhaar.getText());      
-                              
-                   ps.setString(6,age.getText());           ps.setString(5,sex.getSelectedItem().toString());
+                 String age_ = age.getText();
+                if (validate_age(age_))
+                    ps.setString(6,age_);            ps.setString(5,sex.getSelectedItem().toString());
                 ps.setString(11,date.getText());
                 ps.setString(9,address.getText());
                 ps.setString(10,details.getText());
@@ -532,7 +548,9 @@ Class.forName("com.mysql.jdbc.Driver");
                   ps.setString(4,last.getText());
                              ps.setString(7,PAN.getText());      ps.setString(8,Aadhaar.getText());      
                               
-                   ps.setString(6,age.getText());           ps.setString(5,sex.getSelectedItem().toString());
+              String age_ = age.getText();
+                if (validate_age(age_))
+                    ps.setString(6,age_);            ps.setString(5,sex.getSelectedItem().toString());
                 ps.setString(11,date.getText());
                 ps.setString(9,address.getText());
                 ps.setString(10,details.getText());
@@ -555,19 +573,19 @@ Class.forName("com.mysql.jdbc.Driver");
             Logger.getLogger(eSoft.class.getName()).log(Level.SEVERE, null, e);
         }//(ID,Type,First,Last,Sex,Age,PAN,AID,Address,Details,Date)
         DefaultTableModel model=(DefaultTableModel) Tb.getModel();
-        model.setValueAt(id.getText(),Tb.getSelectedRow(),0);
-        model.setValueAt(type.getSelectedItem(),Tb.getSelectedRow(),1);
-         model.setValueAt(first.getText(),Tb.getSelectedRow(),2);
-          model.setValueAt(last.getText(),Tb.getSelectedRow(),3);
+        model.setValueAt(id.getText(),Tb.getSelectedRow(),1);
+        model.setValueAt(type.getSelectedItem(),Tb.getSelectedRow(),2);
+        model.setValueAt(first.getText(),Tb.getSelectedRow(),3);
+        model.setValueAt(last.getText(),Tb.getSelectedRow(),4);
         
-             model.setValueAt(PAN.getText(),Tb.getSelectedRow(),6);
-          model.setValueAt(Aadhaar.getText(),Tb.getSelectedRow(),7);
-           model.setValueAt(address.getText(),Tb.getSelectedRow(),8);
+        model.setValueAt(PAN.getText(),Tb.getSelectedRow(),7);
+        model.setValueAt(Aadhaar.getText(),Tb.getSelectedRow(),8);
+        model.setValueAt(address.getText(),Tb.getSelectedRow(),9);
           
-               model.setValueAt(age.getText(),Tb.getSelectedRow(),5);
+        model.setValueAt(age.getText(),Tb.getSelectedRow(),6);
      
-          model.setValueAt(sex.getSelectedItem(),Tb.getSelectedRow(),4);
-               model.setValueAt(date.getText(),Tb.getSelectedRow(),9);
+        model.setValueAt(sex.getSelectedItem(),Tb.getSelectedRow(),5);
+        model.setValueAt(date.getText(),Tb.getSelectedRow(),10);
         Tb.setDefaultEditor(Object.class, null);}
     }//GEN-LAST:event_jButton2ActionPerformed
 

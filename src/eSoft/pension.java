@@ -54,7 +54,6 @@ public class pension extends javax.swing.JFrame {
         name = new javax.swing.JTextField();
         sname = new javax.swing.JTextField();
         birth = new javax.swing.JTextField();
-        state = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         city = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -73,6 +72,7 @@ public class pension extends javax.swing.JFrame {
         gender = new javax.swing.JComboBox<>();
         search = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        state = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pension");
@@ -112,8 +112,6 @@ public class pension extends javax.swing.JFrame {
         sname.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
 
         birth.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-
-        state.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,7 +200,7 @@ public class pension extends javax.swing.JFrame {
         });
 
         gender.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Male", "Female" }));
 
         search.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         search.addActionListener(new java.awt.event.ActionListener() {
@@ -219,6 +217,14 @@ public class pension extends javax.swing.JFrame {
             }
         });
 
+        state.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        state.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Assam", "Andra Pradesh", "Arunachal Pradesh", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadar and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadeep", "Pondicherry" }));
+        state.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,21 +233,9 @@ public class pension extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(31, 31, 31)
-                                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sname, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sname, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -252,24 +246,32 @@ public class pension extends javax.swing.JFrame {
                             .addComponent(jLabel12))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(birth, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(state, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(city, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(adress, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(birth)
+                            .addComponent(city)
+                            .addComponent(adress)
                             .addComponent(position, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(gender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(gender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(state, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
                         .addGap(15, 15, 15))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(id, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -365,13 +367,69 @@ sname.setText("");
 name.setText("");    
 date.setText("");    
 city.setText("");    adress.setText("");    birth.setText("");    
-state.setText("");     
+//state.setText("");     
        
 
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
+public boolean validate_date(String dob)
+    {
+        int l = dob.length();
+    	for(int i=0;i<2;i++)
+    	{
+    		char c = dob.charAt(i);
+    		if(!((c>='0') && (c<='9')))
+    		{
+    			JOptionPane.showMessageDialog(null,"Enter Correct date");
+    			return false;
+    		
+    		}			
+    	}
+  
+    	l = dob.length();
+    	for(int i=3;i<5;i++)
+    	{
+    		char c = dob.charAt(i);
+    		if(!((c>='0') && (c<='9')))
+    		{
+    			JOptionPane.showMessageDialog(null,"Enter Correct month");
+    			return false;
+    		
+    		}			
+    	}
+    	l = dob.length();
+    	for(int i=6;i<l;i++)
+    	{
+    		char c = dob.charAt(i);
+    		if(!((c>='0') && (c<='9')))
+    		{
+    			JOptionPane.showMessageDialog(null,"Enter Correct year");
+                        return false;
+    	
+    		
+    		}			
+    	}
+        return true;
+    }
+    public boolean validate_name(String name)
+    {
+        int l = name.length();
+        if(l==0)
+            return false;
+//        System.out.println(name+"in func");
+    	int i;
+    	for(i=0;i<l;i++)
+    	{
+            char c = name.charAt(i);
+            if(!(((c>='a' || c>='A') && (c<='Z' || c<='z')) || (c==' ')))
+            {
+                JOptionPane.showMessageDialog(null,"Enter Correct Name");
+                return false;
+            }			
+    	}
+        return true;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         if(!name.getText().trim().equals("")&&!sname.getText().trim().equals("")&&!id.getText().trim().equals("")&&!date.getText().equals("")){
@@ -385,14 +443,41 @@ state.setText("");
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
                 PreparedStatement ps=conn.prepareStatement("INSERT INTO pensioners (ID,Name,Surname,Birth,Gender,State,City,Address,Date)values(?,?,?,?,?,?,?,?,?)");
 
+                String id_ = id.getText();
+                String name_ = name.getText();
+                String sname_ = sname.getText();
+                String birth_ = birth.getText();
+                String gender_ = gender.getSelectedItem().toString();
+                String state_ = state.getSelectedItem().toString();
+                String city_ = city.getText();
+                String adress_ = adress.getText();
+                String date_ = date.getText();
+                String position_ = position.getSelectedItem().toString();
+                
+                                
                 ps.setString(1,id.getText());
-                ps.setString(2,name.getText());
-                  ps.setString(3,sname.getText());
-                    ps.setString(4,birth.getText());
+                
+                if (validate_date(name_))    
+                    ps.setString(2,name_);
+                else
+                    JOptionPane.showMessageDialog(null,"Incorrect Name");
+                
+                if (validate_date(sname_))
+                    ps.setString(3,sname_);
+                else
+                    JOptionPane.showMessageDialog(null,"Incorrect Sur Name");
+                
+                if (validate_date(birth_))
+                    ps.setString(4,birth_);
+                else
+                    JOptionPane.showMessageDialog(null,"Incorrect Date");
+                
             
                 ps.setString(5,gender.getSelectedItem().toString());
-                 ps.setString(6,state.getText());
-                  ps.setString(7,city.getText()); ps.setString(8,adress.getText()); ps.setString(9,date.getText());
+                ps.setString(6,state.getSelectedItem().toString());
+                ps.setString(7,city.getText()); 
+                ps.setString(8,adress.getText()); 
+                ps.setString(9,date.getText());
                   
                   
                    
@@ -400,12 +485,14 @@ state.setText("");
     
                 if(i>0){
                     JOptionPane.showMessageDialog(null,"Successfully saved  ");
-                 id.setText("");   
-sname.setText("");    
-name.setText("");    
-date.setText("");    
-city.setText("");    adress.setText("");    birth.setText("");    
-state.setText("");  
+                id.setText("");   
+                sname.setText("");    
+                name.setText("");    
+                date.setText("");    
+                city.setText("");    
+                adress.setText("");    
+                birth.setText("");    
+//state.setText("");  
           
                  
                     ps.close();
@@ -452,14 +539,31 @@ Class.forName("com.mysql.jdbc.Driver");
             String a="update pensioners set ID=?,Name=?,Surname=?,Birth=?,Gender=?,State=?,City=?,Adress=?,Date=?,Position=? ";
             PreparedStatement ps=conn.prepareStatement(a);
             
-      ps.setString(1,id.getText());
+                String id_ = id.getText();
+                String name_ = name.getText();
+                String sname_ = sname.getText();
+                String birth_ = birth.getText();
+                String gender_ = gender.getSelectedItem().toString();
+                String state_ = state.getSelectedItem().toString();
+                String city_ = city.getText();
+                String adress_ = adress.getText();
+                String date_ = date.getText();
+                String position_ = position.getSelectedItem().toString();
+                
+                                
+                ps.setString(1,id.getText());
                 ps.setString(2,name.getText());
-                  ps.setString(3,sname.getText());
+                ps.setString(3,sname.getText());
+                if (validate_date(birth_))
                     ps.setString(4,birth.getText());
+                else
+                    JOptionPane.showMessageDialog(null,"Incorrect Date");
             
                 ps.setString(5,gender.getSelectedItem().toString());
-                 ps.setString(6,state.getText());
-                  ps.setString(7,city.getText()); ps.setString(8,adress.getText()); ps.setString(9,date.getText());
+                ps.setString(6,state.getSelectedItem().toString());
+                ps.setString(7,city.getText()); 
+                ps.setString(8,adress.getText()); 
+                ps.setString(9,date.getText());
                   
                   
                     
@@ -469,11 +573,9 @@ Class.forName("com.mysql.jdbc.Driver");
             int rw=ps.executeUpdate();
             if(rw>0){
                 JOptionPane.showMessageDialog(null,"Changes are saved");
-
             }
             else{
                 JOptionPane.showMessageDialog(null,"Changes are not saved");
-
             }
         }
         catch(Exception e){
@@ -481,13 +583,13 @@ Class.forName("com.mysql.jdbc.Driver");
         }
         DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         model.setValueAt(id.getText(),Tb.getSelectedRow(),0);
-         model.setValueAt(name.getText(),Tb.getSelectedRow(),1);
-          model.setValueAt(sname.getText(),Tb.getSelectedRow(),2);
+        model.setValueAt(name.getText(),Tb.getSelectedRow(),1);
+        model.setValueAt(sname.getText(),Tb.getSelectedRow(),2);
        
         model.setValueAt(birth.getText(),Tb.getSelectedRow(),3);
-     model.setValueAt(gender,Tb.getSelectedRow(),4);
+        model.setValueAt(gender,Tb.getSelectedRow(),4);
        
-        model.setValueAt(state.getText(),Tb.getSelectedRow(),5);
+        model.setValueAt(state.getSelectedItem().toString(),Tb.getSelectedRow(),5);
         
         model.setValueAt(city.getText(),Tb.getSelectedRow(),6);
        
@@ -524,17 +626,14 @@ Class.forName("com.mysql.jdbc.Driver");
               
                 JOptionPane.showMessageDialog(null,"Successfully Deleted");
                 model.removeRow(Tb.getSelectedRow());
-           id.setText("");   
-sname.setText("");    
-name.setText("");    
-date.setText("");    
-city.setText("");    adress.setText("");    birth.setText("");    
-state.setText("");   
-             
-           
-            
-            
-         
+            id.setText("");   
+            sname.setText("");    
+            name.setText("");    
+            date.setText("");    
+            city.setText("");    
+            adress.setText("");    
+            birth.setText("");    
+
         }
         if(i==1){};
        
@@ -553,7 +652,7 @@ state.setText("");
         
         birth.setText(model.getValueAt(Tb.getSelectedRow(),3).toString());    
         gender.setSelectedItem(model.getValueAt(Tb.getSelectedRow(),4).toString());
-         state.setText(model.getValueAt(Tb.getSelectedRow(),5).toString());  
+         state.setSelectedItem(model.getValueAt(Tb.getSelectedRow(),5).toString());  
           city.setText(model.getValueAt(Tb.getSelectedRow(),6).toString());  
            adress.setText(model.getValueAt(Tb.getSelectedRow(),7).toString());  
             date.setText(model.getValueAt(Tb.getSelectedRow(),8).toString());  
@@ -606,6 +705,10 @@ state.setText("");
         date.setText(dateFormat.format(date_temp));
         //dateMouseMoved(java.awt.event.MouseEvent evt);
     }//GEN-LAST:event_dateMouseMoved
+
+    private void stateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -674,7 +777,7 @@ state.setText("");
     private javax.swing.JComboBox<String> position;
     private javax.swing.JTextField search;
     private javax.swing.JTextField sname;
-    private javax.swing.JTextField state;
+    private javax.swing.JComboBox<String> state;
     // End of variables declaration//GEN-END:variables
 private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("book.png")));

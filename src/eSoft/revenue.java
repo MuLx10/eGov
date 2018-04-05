@@ -321,7 +321,12 @@ public class revenue extends javax.swing.JFrame {
 
 amount.setText("");tax.setText("");total.setText("");
     }//GEN-LAST:event_jButton5ActionPerformed
-
+   public boolean validate_total(double total,double amt,double tax){
+    double tot = amt*(1+0.01*tax);
+    if(total == tot)
+        return true;
+    return false;
+   }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
          DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         if(!id.getText().trim().equals("")&& !amount.getText().equals("")&&!tax.getText().equals("")&&!total.getText().equals("")){
@@ -343,7 +348,13 @@ amount.setText("");tax.setText("");total.setText("");
              
              ps.setString(4,date.getText());       
              ps.setString(5,amount.getText());      
-             ps.setString(6,tax.getText());  
+             ps.setString(6,tax.getText());
+             
+            double amt = Integer.parseInt(amount.getText());
+            double tx = Integer.parseInt(tax.getText());
+
+            double tot = amt*(1+0.01*tx);
+            if (validate_total(tot,amt,tx))
                 ps.setString(7,total.getText());
               
                 
@@ -396,14 +407,20 @@ Class.forName("com.mysql.jdbc.Driver");
             Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
             String a="update revenue set ID=?,Type=?,Mode=?,Date=?,Amount=?,Tax=?,Total=? ";
             PreparedStatement ps=conn.prepareStatement(a);
-           ps.setString(1,id.getText());
-                ps.setString(2,type.getSelectedItem().toString());
-                ps.setString(3,pmode.getSelectedItem().toString());
+            ps.setString(1,id.getText());
+            ps.setString(2,type.getSelectedItem().toString());
+            ps.setString(3,pmode.getSelectedItem().toString());
              
-             
-             ps.setString(4,date.getText());       
-             ps.setString(5,amount.getText());      
-             ps.setString(6,tax.getText());  
+
+            ps.setString(4,date.getText());       
+            ps.setString(5,amount.getText());      
+            ps.setString(6,tax.getText());  
+            
+            double amt = Integer.parseInt(amount.getText());
+            double tx = Integer.parseInt(tax.getText());
+            double tot = amt*(1+0.01*tx);
+            
+            if (validate_total(tot,amt,tx))
                 ps.setString(7,total.getText());
               
     

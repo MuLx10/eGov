@@ -35,26 +35,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                  <Component id="name" min="-2" pref="194" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="id" min="-2" pref="194" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sname" min="-2" pref="194" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="sname" min="-2" pref="194" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -67,12 +50,12 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="birth" pref="194" max="32767" attributes="0"/>
-                          <Component id="state" pref="194" max="32767" attributes="0"/>
-                          <Component id="city" pref="194" max="32767" attributes="0"/>
-                          <Component id="adress" pref="194" max="32767" attributes="0"/>
+                          <Component id="birth" max="32767" attributes="0"/>
+                          <Component id="city" max="32767" attributes="0"/>
+                          <Component id="adress" max="32767" attributes="0"/>
                           <Component id="position" alignment="0" max="32767" attributes="0"/>
                           <Component id="gender" alignment="0" max="32767" attributes="0"/>
+                          <Component id="state" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -80,7 +63,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton2" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton3" pref="75" max="32767" attributes="0"/>
+                      <Component id="jButton3" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -88,6 +71,17 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" pref="194" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="name" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
+                          <Component id="id" alignment="1" min="-2" pref="194" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -290,13 +284,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="birth">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Consolas" size="14" style="0"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="state">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Consolas" size="14" style="0"/>
@@ -537,9 +524,10 @@
           <Font name="Consolas" size="14" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
-            <StringItem index="0" value="Male"/>
-            <StringItem index="1" value="Female"/>
+          <StringArray count="3">
+            <StringItem index="0" value=""/>
+            <StringItem index="1" value="Male"/>
+            <StringItem index="2" value="Female"/>
           </StringArray>
         </Property>
       </Properties>
@@ -567,6 +555,59 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="state">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Consolas" size="14" style="0"/>
+        </Property>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="36">
+            <StringItem index="0" value=""/>
+            <StringItem index="1" value="Assam"/>
+            <StringItem index="2" value="Andra Pradesh"/>
+            <StringItem index="3" value="Arunachal Pradesh"/>
+            <StringItem index="4" value="Bihar"/>
+            <StringItem index="5" value="Chhattisgarh"/>
+            <StringItem index="6" value="Goa"/>
+            <StringItem index="7" value="Gujarat"/>
+            <StringItem index="8" value="Haryana"/>
+            <StringItem index="9" value="Himachal Pradesh"/>
+            <StringItem index="10" value="Jammu and Kashmir"/>
+            <StringItem index="11" value="Jharkhand"/>
+            <StringItem index="12" value="Karnataka"/>
+            <StringItem index="13" value="Kerala"/>
+            <StringItem index="14" value="Madya Pradesh"/>
+            <StringItem index="15" value="Maharashtra"/>
+            <StringItem index="16" value="Manipur"/>
+            <StringItem index="17" value="Meghalaya"/>
+            <StringItem index="18" value="Mizoram"/>
+            <StringItem index="19" value="Nagaland"/>
+            <StringItem index="20" value="Orissa"/>
+            <StringItem index="21" value="Punjab"/>
+            <StringItem index="22" value="Rajasthan"/>
+            <StringItem index="23" value="Sikkim"/>
+            <StringItem index="24" value="Tamil Nadu"/>
+            <StringItem index="25" value="Tripura"/>
+            <StringItem index="26" value="Uttaranchal"/>
+            <StringItem index="27" value="Uttar Pradesh"/>
+            <StringItem index="28" value="West Bengal"/>
+            <StringItem index="29" value="Andaman and Nicobar Islands"/>
+            <StringItem index="30" value="Chandigarh"/>
+            <StringItem index="31" value="Dadar and Nagar Haveli"/>
+            <StringItem index="32" value="Daman and Diu"/>
+            <StringItem index="33" value="Delhi"/>
+            <StringItem index="34" value="Lakshadeep"/>
+            <StringItem index="35" value="Pondicherry"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stateActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

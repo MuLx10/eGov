@@ -195,7 +195,98 @@ public class complain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public boolean validate_email(String email)
+    {
+        try{
+            if(email.contains("@") && email.contains(".com")) {
+                return true;
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Enter valid mail ID");
+                return false;
+            }
+        }
+        catch(Exception e)
+        {
+            return false;
+        }
+    }
+    public boolean validate_date(String dob)
+    {
+        int l = dob.length();
+    	for(int i=0;i<2;i++)
+    	{
+    		char c = dob.charAt(i);
+    		if(!((c>='0') && (c<='9')))
+    		{
+    			JOptionPane.showMessageDialog(null,"Enter Correct date");
+    			return false;
+    		
+    		}			
+    	}
+  
+    	l = dob.length();
+    	for(int i=3;i<5;i++)
+    	{
+    		int mnt = Integer.parseInt(dob.substring(3, 5));
+    		if(mnt>13 || mnt<1)
+    		{
+    			JOptionPane.showMessageDialog(null,"Enter Correct month");
+    			return false;
+    		
+    		}			
+    	}
+    	l = dob.length();
+    	for(int i=6;i<l;i++)
+    	{
+    		char c = dob.charAt(i);
+    		if(!((c>='0') && (c<='9')))
+    		{
+    			JOptionPane.showMessageDialog(null,"Enter Correct year");
+                        return false;
+    	
+    		
+    		}			
+    	}
+        return true;
+    }
+    public boolean validate_time(String time)
+    {
+        try{
+            int l = time.length();
+            int h = Integer.parseInt(time.substring(0,2));
+            int m = Integer.parseInt(time.substring(3,5));
+            int s = Integer.parseInt(time.substring(6,l));
+//            System.out.println(h);
+//            System.out.println(m);
+//            System.out.println(s);
+            if(h<24 && h>0)
+                if(m<60 && m>0)
+                    if(s<60 && s>0)
+                        return true;
+            return false;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+    public boolean validate_datetime(String datetime)
+    {
+        int l = datetime.length();
+        if(l==0)
+            return false;
+        String format = "yyyy/MM/dd HH:mm:ss";
+        String d = datetime.substring(0, 10);
+        String t = datetime.substring(11,datetime.length());
+        if(validate_date(d) && validate_time(t)) {
+            return true;
+        }
+    	else {
+//            JOptionPane.showMessageDialog(null,"Enter valid mail ID");
+            return false;
+    	}
+    }
+            
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         if(!name.getText().trim().equals("")&&!mail.getText().trim().equals("")){
@@ -208,11 +299,17 @@ public class complain extends javax.swing.JFrame {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","123");
                 PreparedStatement ps=conn.prepareStatement("INSERT INTO complain (Name,email,Date,Reasons)values(?,?,?,?)");
-
+                
+                String eml = mail.getText();
+                String dt = date.getText();
             
                 ps.setString(1,name.getText());
-                ps.setString(2,mail.getText());
-                ps.setString(3,date.getText());
+                
+                if (validate_email(eml))
+                    ps.setString(2,eml);
+                
+                if(validate_datetime(dt))
+                    ps.setString(3,dt);
          
                 ps.setString(4,reason.getText());
                 

@@ -338,7 +338,46 @@ state.setText("");
 
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
+    public boolean validate_date(String dob)
+    {
+        int l = dob.length();
+    	for(int i=0;i<2;i++)
+    	{
+    		char c = dob.charAt(i);
+    		if(!((c>='0') && (c<='9')))
+    		{
+    			JOptionPane.showMessageDialog(null,"Enter Correct date");
+    			return false;
+    		
+    		}			
+    	}
+  
+    	l = dob.length();
+    	for(int i=3;i<5;i++)
+    	{
+    		char c = dob.charAt(i);
+    		if(!((c>='0') && (c<='9')))
+    		{
+    			JOptionPane.showMessageDialog(null,"Enter Correct month");
+    			return false;
+    		
+    		}			
+    	}
+    	l = dob.length();
+    	for(int i=6;i<l;i++)
+    	{
+    		char c = dob.charAt(i);
+    		if(!((c>='0') && (c<='9')))
+    		{
+    			JOptionPane.showMessageDialog(null,"Enter Correct year");
+                        return false;
+    	
+    		
+    		}			
+    	}
+        return true;
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  DefaultTableModel model=(DefaultTableModel) Tb.getModel();
         if(!name.getText().trim().equals("")&&!sname.getText().trim().equals("")&&!id.getText().trim().equals("")&&!date.getText().equals("")){
@@ -346,23 +385,38 @@ state.setText("");
 
             try{
 
-
-
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/lib","root","");
                 PreparedStatement ps=conn.prepareStatement("INSERT INTO staff (ID,Name,Surname,Birth,Gender,State,City,Adress,Date,Position)values(?,?,?,?,?,?,?,?,?,?)");
-
+                
+                String id_ = id.getText();
+                String name_ = name.getText();
+                String sname_ = sname.getText();
+                String birth_ = birth.getText();
+                String gender_ = gender.getSelectedItem().toString();
+                String state_ = state.getText();
+                String city_ = city.getText();
+                String adress_ = adress.getText();
+                String date_ = date.getText();
+                String position_ = position.getSelectedItem().toString();
+                
+                                
                 ps.setString(1,id.getText());
                 ps.setString(2,name.getText());
-                  ps.setString(3,sname.getText());
+                ps.setString(3,sname.getText());
+                if (validate_date(birth_))
                     ps.setString(4,birth.getText());
+                else
+                    JOptionPane.showMessageDialog(null,"Incorrect Date");
             
                 ps.setString(5,gender.getSelectedItem().toString());
-                 ps.setString(6,state.getText());
-                  ps.setString(7,city.getText()); ps.setString(8,adress.getText()); ps.setString(9,date.getText());
+                ps.setString(6,state.getText());
+                ps.setString(7,city.getText()); 
+                ps.setString(8,adress.getText()); 
+                ps.setString(9,date.getText());
                   
                   
-                    ps.setString(10,position.getSelectedItem().toString());
+                ps.setString(10,position.getSelectedItem().toString());
                 int i=ps.executeUpdate();
     
                 if(i>0){
@@ -419,7 +473,7 @@ Class.forName("com.mysql.jdbc.Driver");
             String a="update staff set ID=?,Name=?,Surname=?,Birth=?,Gender=?,State=?,City=?,Adress=?,Date=?,Position=? ";
             PreparedStatement ps=conn.prepareStatement(a);
             
-      ps.setString(1,id.getText());
+                ps.setString(1,id.getText());
                 ps.setString(2,name.getText());
                   ps.setString(3,sname.getText());
                     ps.setString(4,birth.getText());
